@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class RemoveIfDuplicateApp {
@@ -16,9 +17,28 @@ public class RemoveIfDuplicateApp {
     }
 
     public List<Integer> removeAllDuplicates(List<Integer> originalList) {
-        //TODO: implement this method...
+        // if sorting is allowed (so we don't care about the order of numbers in the output list)
 
-        return new ArrayList<>();
+        Collections.sort(originalList);
+        List<Integer> outputList = new ArrayList<>();
+
+        int counter = 1;
+
+        for (int i = 1; i < originalList.size(); i++) {
+            if (counter == 1 && (!originalList.get(i).equals(originalList.get(i - 1)))) {
+                outputList.add(originalList.get(i - 1));
+            } else if (counter > 1 && (!originalList.get(i).equals(originalList.get(i - 1)))) {
+                counter = 1;
+            } else {
+                counter++;
+            }
+        }
+
+        if (! originalList.get(originalList.size()-1).equals(originalList.get(originalList.size()-2))) {
+            outputList.add(originalList.get(originalList.size()-1));
+        }
+
+        return outputList;
     }
 
 }
