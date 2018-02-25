@@ -3,7 +3,7 @@ import java.util.*;
 public class RemoveIfDuplicateApp {
 
     public static void main(String[] args) {
-        List<Integer> originalList = Arrays.asList(0, 1, 2, 3, 0, 0, 2);
+        List<Integer> originalList = Arrays.asList(7, 0, 197, 3, 2, 9, 0, 197, 197, 0, 8, 9, 13, 197, -197, 199, 5, 2, 197);
 
         RemoveIfDuplicateApp app = new RemoveIfDuplicateApp();
         List<Integer> listWithoutDuplicates = app.removeAllDuplicates(originalList);
@@ -24,7 +24,7 @@ public class RemoveIfDuplicateApp {
 
             for (Integer setElement : uniqueSet) {
                 for (Integer listElement : originalList) {
-                    if (setElement.equals(originalList.get(listElement))) {
+                    if (setElement.equals(listElement)) {
                         occuranceCounter++;
                         if (occuranceCounter > 1) break;
                     }
