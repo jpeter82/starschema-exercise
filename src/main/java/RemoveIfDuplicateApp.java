@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class RemoveIfDuplicateApp {
 
@@ -16,9 +14,25 @@ public class RemoveIfDuplicateApp {
     }
 
     public List<Integer> removeAllDuplicates(List<Integer> originalList) {
-        //TODO: implement this method...
+        Map<Integer, Integer> container = new HashMap<>();
+        List<Integer> outputList = new ArrayList<>();
 
-        return new ArrayList<>();
+        for (Integer element : originalList) {
+            if (container.containsKey(element)) {
+                container.put(element, container.get(element) + 1);
+            } else {
+                container.put(element, 1);
+            }
+        }
+
+        for (Integer key : container.keySet()) {
+            Integer value = container.get(key);
+            if (value.equals(1)) {
+                outputList.add(key);
+            }
+        }
+
+        return outputList;
     }
 
 }
