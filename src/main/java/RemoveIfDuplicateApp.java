@@ -43,6 +43,10 @@ public class RemoveIfDuplicateApp {
                     inValidated = false;
                 }
             }
+
+            if (!inValidHelper[originalArray.length - 1]) {
+                outputList.add(originalArray[originalArray.length - 1]);
+            }
         }
 
         return outputList;
