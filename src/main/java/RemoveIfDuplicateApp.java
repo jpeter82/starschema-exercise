@@ -14,25 +14,30 @@ public class RemoveIfDuplicateApp {
     }
 
     public int[] removeAllDuplicates(int[] originalArray) {
-        Arrays.sort(originalArray);
-        int[] outputArray = {};
-        int counter = 0;
 
-        for (int i = 0 ; i < originalArray.length - 1; i++) {
-            if ((originalArray[i] != originalArray[i + 1]) && counter == 0) {
-                outputArray = addToArray(originalArray[i], outputArray);
-            } else if ((originalArray[i] != originalArray[i + 1]) && (counter != 0)) {
-                counter = 0;
-            } else {
-                counter++;
+        if (originalArray.length < 2) {
+            return originalArray;
+        } else {
+            Arrays.sort(originalArray);
+            int[] outputArray = {};
+            int counter = 0;
+
+            for (int i = 0 ; i < originalArray.length - 1; i++) {
+                if ((originalArray[i] != originalArray[i + 1]) && counter == 0) {
+                    outputArray = addToArray(originalArray[i], outputArray);
+                } else if ((originalArray[i] != originalArray[i + 1]) && (counter != 0)) {
+                    counter = 0;
+                } else {
+                    counter++;
+                }
             }
-        }
 
-        if (originalArray[originalArray.length - 2] != originalArray[originalArray.length - 1]) {
-            outputArray = addToArray(originalArray[originalArray.length - 1], outputArray);
-        }
+            if (originalArray[originalArray.length - 2] != originalArray[originalArray.length - 1]) {
+                outputArray = addToArray(originalArray[originalArray.length - 1], outputArray);
+            }
 
-        return outputArray;
+            return outputArray;
+        }
     }
 
     public int[] addToArray(int element, int[] array) {
