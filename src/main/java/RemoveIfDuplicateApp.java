@@ -14,25 +14,30 @@ public class RemoveIfDuplicateApp {
     }
 
     public List<Integer> removeAllDuplicates(List<Integer> originalList) {
-        Map<Integer, Integer> container = new HashMap<>();
-        List<Integer> outputList = new ArrayList<>();
 
-        for (Integer element : originalList) {
-            if (container.containsKey(element)) {
-                container.put(element, container.get(element) + 1);
-            } else {
-                container.put(element, 1);
+        if (originalList.size() < 2) {
+            return originalList;
+        } else {
+            Map<Integer, Integer> container = new HashMap<>();
+            List<Integer> outputList = new ArrayList<>();
+
+            for (Integer element : originalList) {
+                if (container.containsKey(element)) {
+                    container.put(element, container.get(element) + 1);
+                } else {
+                    container.put(element, 1);
+                }
             }
-        }
 
-        for (Integer key : container.keySet()) {
-            Integer value = container.get(key);
-            if (value.equals(1)) {
-                outputList.add(key);
+            for (Integer key : container.keySet()) {
+                Integer value = container.get(key);
+                if (value.equals(1)) {
+                    outputList.add(key);
+                }
             }
-        }
 
-        return outputList;
+            return outputList;
+        }
     }
 
 }
